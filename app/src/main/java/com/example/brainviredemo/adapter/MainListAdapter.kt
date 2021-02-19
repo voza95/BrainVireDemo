@@ -22,8 +22,11 @@ class MainListAdapter(
     }
 
     override fun onBindViewHolder(holder: MainListViewHolder, position: Int) {
-        holder.itemView.titleTV.text = mMap.keys.toString()
-        holder.itemView.detailTV.text = mMap.values.toString()
+        for (item in mMap){
+            holder.itemView.titleTV.text = item.key+" : "+item.value+"\n"
+        }
+        /*holder.itemView.titleTV.text = mMap.keys.toString()
+        holder.itemView.detailTV.text = mMap.values.toString()*/
     }
 
     override fun getItemCount(): Int {
