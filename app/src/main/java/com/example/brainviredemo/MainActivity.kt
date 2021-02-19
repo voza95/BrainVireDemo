@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     private val appClient = AppClient.getClient(this@MainActivity)
     private val apiInterface = appClient.create(ApiInterface::class.java)
 
-    lateinit var rates: HashMap<String, HashMap<String, Double>>
+    lateinit var rates: LinkedHashMap<String, LinkedHashMap<String, Double>>
     var mListAdapter: MainListAdapter?= null
 
     lateinit var mainListingRV: RecyclerView
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        rates =  HashMap<String, HashMap<String, Double>>()
+        rates =  LinkedHashMap<String, LinkedHashMap<String, Double>>()
 
         mainListingRV = findViewById(R.id.mainListingRV)
         getMainList()
@@ -55,7 +55,10 @@ class MainActivity : AppCompatActivity() {
                     if (response.isSuccessful){
                         if (!response.body()?.rates.isNullOrEmpty()){
                             rates = response.body()?.rates!!
-                            mListAdapter = MainListAdapter(this@MainActivity,rates)
+
+                            var rateDates = ArrayList<String>(rates.keys)
+
+                            mListAdapter = MainListAdapter(this@MainActivity, rates,rateDates)
                             mainListingRV.adapter = mListAdapter
                         }
                     }
