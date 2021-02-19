@@ -8,7 +8,7 @@ data class MainListResponse(
 	val endAt: String? = null,
 
 	@field:SerializedName("rates")
-	val rates: HashMap<String, Map<String, Double>>? = null,
+	val rates: HashMap<String, HashMap<String, Double>>? = null,
 
 	@field:SerializedName("start_at")
 	val startAt: String? = null,

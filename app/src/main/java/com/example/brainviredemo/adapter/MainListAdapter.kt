@@ -10,14 +10,14 @@ import kotlinx.android.synthetic.main.main_list_item.view.*
 
 class MainListAdapter(
     var mContext: MainActivity,
-    var mList: ArrayList<Any>
+    var mList: HashMap<String,HashMap<String,Double>>
 ) : RecyclerView.Adapter<MainListAdapter.MainListViewHolder>(){
 
     class MainListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainListViewHolder {
-        val layoutInflater = LayoutInflater.from(mContext)
-        val view: View = layoutInflater.inflate(R.layout.main_list_item,parent)
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val view: View = layoutInflater.inflate(R.layout.main_list_item,parent,false)
         return  MainListViewHolder(view)
     }
 

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
+import com.example.brainviredemo.adapter.MainListAdapter
 import com.example.brainviredemo.retrofit.ApiInterface
 import com.example.brainviredemo.retrofit.AppClient
 import com.example.brainviredemo.retrofit.response.MainListResponse
@@ -17,10 +18,15 @@ class MainActivity : AppCompatActivity() {
     private val appClient = AppClient.getClient(this@MainActivity)
     private val apiInterface = appClient.create(ApiInterface::class.java)
 
+    lateinit var rates: HashMap<String, HashMap<String, Double>>
+    var mListAdapter: MainListAdapter?= null
+
     lateinit var mainListingRV: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        rates =  HashMap<String, HashMap<String, Double>>()
 
         mainListingRV = findViewById(R.id.mainListingRV)
         getMainList()
@@ -47,7 +53,11 @@ class MainActivity : AppCompatActivity() {
                 ) {
                     hideDialog()
                     if (response.isSuccessful){
-
+                        if (!response.body()?.rates.isNullOrEmpty()){
+                            rates = response.body()?.rates!!
+                            mListAdapter = MainListAdapter(this@MainActivity,rates)
+                            mainListingRV.adapter = mListAdapter
+                        }
                     }
 
                 }

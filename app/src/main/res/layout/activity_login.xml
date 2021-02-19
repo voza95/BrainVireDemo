@@ -21,6 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionNext"
+            android:text="test@android.com"
             android:inputType="textEmailAddress"
             android:hint="@string/email"/>
 
@@ -30,6 +31,7 @@
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
+            android:text="123456"
             android:layout_marginTop="40dp"
             android:hint="@string/password"/>
 
