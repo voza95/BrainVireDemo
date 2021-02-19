@@ -1,5 +1,6 @@
 package com.example.brainviredemo.adapter
 
+import android.graphics.Color
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -46,10 +47,14 @@ class MainListAdapter(
             c1.text = row
             c1.gravity = Gravity.CENTER
             c1.setBackgroundResource(R.drawable.cell_shape)
+            c1.setTextColor(Color.BLACK)
+
             var c2 = TextView(mContext)
             c2.text = subValues[index].toString()
             c2.setBackgroundResource(R.drawable.cell_shape)
             c2.gravity = Gravity.CENTER
+            c2.setTextColor(Color.BLACK)
+
             tr.addView(c1)
             tr.addView(c2)
             holder.itemView.tablaCuerpo.addView(tr)
