@@ -25,8 +25,6 @@ object AppClient {
             .addInterceptor { chain ->
                 val original = chain.request()
                 val requestBuilder = original.newBuilder()
-                    .header("Client-Service", "COAS2020SCP")
-                    .header("Auth-Key", "SYS5ccd7b534b19d30030c6503f3a852d00SCP")
                     .header("Content-Type", "application/json")
                 //val requestBuilder = original.newBuilder().addHeader("Content-type", "application/json; charset=utf-8")
                 val request = requestBuilder.build()
