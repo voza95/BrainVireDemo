@@ -1,8 +1,11 @@
 package com.example.brainviredemo.adapter
 
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TableRow
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.brainviredemo.MainActivity
 import com.example.brainviredemo.R
@@ -34,7 +37,38 @@ class MainListAdapter(
 
         var subKeys = ArrayList<String>(mMap[rateDates[position]]?.keys)
         var subValues = ArrayList<Double>(mMap[rateDates[position]]?.values)
-        holder.itemView.viewOneTV.text = "${subKeys[0]} = ${subValues[0]}"
+
+        holder.itemView.tablaCuerpo.isStretchAllColumns = true
+        holder.itemView.tablaCuerpo.bringToFront()
+        for ((index,row) in subKeys.withIndex()){
+            var tr = TableRow(mContext)
+            var c1 = TextView(mContext)
+            c1.text = row
+            c1.gravity = Gravity.CENTER
+            c1.setBackgroundResource(R.drawable.cell_shape)
+            var c2 = TextView(mContext)
+            c2.text = subValues[index].toString()
+            c2.setBackgroundResource(R.drawable.cell_shape)
+            c2.gravity = Gravity.CENTER
+            tr.addView(c1)
+            tr.addView(c2)
+            holder.itemView.tablaCuerpo.addView(tr)
+        }
+
+
+
+       /* holder.itemView.viewOneTitleTV.text = "${subKeys[0]}"
+        holder.itemView.viewOneValueTV.text = "${subValues[0]}"
+
+        holder.itemView.viewTwoTitleTV.text = "${subKeys[1]}"
+        holder.itemView.viewTwoValueTV.text = "${subValues[1]}"
+
+        holder.itemView.viewThreeTitleTV.text = "${subKeys[2]}"
+        holder.itemView.viewThreeValueTV.text = "${subValues[2]}"
+
+
+        holder.itemView.viewFourTV.text = "${subKeys[3]} = ${subValues[3]}"
+        holder.itemView.viewFiveTV.text = "${subKeys[4]} = ${subValues[4]}"*/
     }
 
     override fun getItemCount(): Int {
