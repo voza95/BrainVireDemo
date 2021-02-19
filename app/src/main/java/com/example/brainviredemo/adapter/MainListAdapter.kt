@@ -55,20 +55,6 @@ class MainListAdapter(
             holder.itemView.tablaCuerpo.addView(tr)
         }
 
-
-
-       /* holder.itemView.viewOneTitleTV.text = "${subKeys[0]}"
-        holder.itemView.viewOneValueTV.text = "${subValues[0]}"
-
-        holder.itemView.viewTwoTitleTV.text = "${subKeys[1]}"
-        holder.itemView.viewTwoValueTV.text = "${subValues[1]}"
-
-        holder.itemView.viewThreeTitleTV.text = "${subKeys[2]}"
-        holder.itemView.viewThreeValueTV.text = "${subValues[2]}"
-
-
-        holder.itemView.viewFourTV.text = "${subKeys[3]} = ${subValues[3]}"
-        holder.itemView.viewFiveTV.text = "${subKeys[4]} = ${subValues[4]}"*/
     }
 
     override fun getItemCount(): Int {
